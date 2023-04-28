@@ -1,11 +1,8 @@
 import { CalendarDaysIcon, PaperClipIcon } from "@heroicons/react/24/outline";
 import { Item } from "./components/Item";
+import type { NavbarProps } from "./Navbar.types";
 
-import { useState } from "react";
-
-export const Navbar = () => {
-  const [activeItem, setActiveItem] = useState(0);
-
+export const Navbar = ({ activeItem, setActiveItem }: NavbarProps) => {
   const ITEMS = [
     { icon: <CalendarDaysIcon />, text: "month budget calculator" },
     { icon: <PaperClipIcon />, text: "helpful data" },
@@ -18,8 +15,8 @@ export const Navbar = () => {
           icon={icon}
           text={text}
           isActive={indx === activeItem}
-          key={text}
           onClick={() => setActiveItem(indx)}
+          key={text}
         />
       ))}
     </nav>

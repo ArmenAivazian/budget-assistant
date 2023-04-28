@@ -1,4 +1,4 @@
-import type { NavbarItem } from "./types";
+import type { NavbarItem } from "./Item.types";
 
 export const Item = ({ icon, text, isActive, onClick }: NavbarItem) => {
   const classIsActive = isActive ? " bg-gray-700" : "";
