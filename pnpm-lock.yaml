@@ -10,6 +10,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  react-tailwindcss-datepicker:
+    specifier: 1.4.1
+    version: 1.4.1(dayjs@1.11.7)(react@18.2.0)
 
 devDependencies:
   '@types/react':
@@ -841,6 +844,10 @@ packages:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
     dev: true
 
+  /dayjs@1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
+    dev: false
+
   /debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
     engines: {node: '>=6.0'}
@@ -1597,6 +1604,16 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-tailwindcss-datepicker@1.4.1(dayjs@1.11.7)(react@18.2.0):
+    resolution: {integrity: sha512-qZogyzCzbadXA1n7twI5U/z8bCdN8AKugDn/FWCQIRyak0iN2ZcQ4P70kBFZDUXgAN15OMUvusrqPeCagk6Hsg==}
+    peerDependencies:
+      dayjs: ^1.11.6
+      react: ^17.0.2 || ^18.2.0
+    dependencies:
+      dayjs: 1.11.7
+      react: 18.2.0
     dev: false
 
   /react@18.2.0:
