@@ -1,6 +1,6 @@
 import type { NavbarProps } from "./Navbar.types";
 
-import { Item } from "./components/Item";
+import { Item } from "./components";
 
 export const Navbar = ({ activeItem, setActiveItem }: NavbarProps) => {
   const ITEMS = ["🗓&nbsp; month budget calculator", "✍&nbsp; helpful data"];
