@@ -1,5 +1,7 @@
 import { ChangeEventHandler, useState } from "react";
+
 import type { TextInputProps } from "./TextInput.types";
+
 import { addSpaceAfterThirdDigit, convertStringHyphen } from "./utils";
 
 export const TextInput = ({ name, type }: TextInputProps) => {
