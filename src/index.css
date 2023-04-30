@@ -8,9 +8,19 @@
         font-size: 16px;
     }
 
+    h1 {
+        font-weight: 700;
+        font-size: 26px;
+        color: #fff;
+    }
+
     @media (min-width: 768px) {
         html {
             font-size: 18px;
+        }
+
+        h1 {
+            font-size: 36px;
         }
     }
 }
