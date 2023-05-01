@@ -16,14 +16,15 @@ module.exports = {
       "error",
       {
         "groups": [
-          ["^\\u0000"],   // Side effect imports
-          ["^react$"],    // React
-          ["^@?\\w"],     // Packages
-          [".*types"],    // Types
-          ["^.+\\.css$"], // Styles 
+          ["^\\u0000"],     // Side effect imports
+          ["^react$"],      // React
+          ["^@?\\w"],       // Packages
+          [".*types"],      // Types
+          ["^.+\\.css$"],   // Styles 
+          ["^.+\\.styles"], // Styles 
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"], // Located "../"
           ["^\\./(?=.*/)(?!/?$)", "^\\.\\./(?=.*/)(?!/?$)", "^\\./?$"], // 5. Located "./"
-          ["^\\./"]       // 6. Other imports
+          ["^\\./"]         // 6. Other imports
         ]
       }
     ]

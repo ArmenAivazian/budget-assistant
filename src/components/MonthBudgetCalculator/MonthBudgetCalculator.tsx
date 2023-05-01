@@ -1,9 +1,10 @@
 import {
   Column,
   Grid,
+  Input,
+  InvestmentRow,
   RangeDatePicker,
   Row,
-  TextInput,
   Title,
 } from "./components";
 
@@ -14,17 +15,18 @@ export const MonthBudgetCalculator = () => {
         <Row>
           <Title text="💰 Salaries" />
           <Grid>
-            <TextInput name="Armen's salary" />
-            <TextInput name="Nastia's salary" />
+            <Input name="Armen's salary" />
+            <Input name="Nastia's salary" />
           </Grid>
         </Row>
         <Row>
           <Title text="📈 Statistic" />
           <Grid>
             <RangeDatePicker />
-            <TextInput name="Amount spent during this period" />
+            <Input name="Amount spent during this period" />
           </Grid>
         </Row>
+        <InvestmentRow />
       </Column>
     </div>
   );
