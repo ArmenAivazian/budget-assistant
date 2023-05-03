@@ -6,11 +6,9 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      assets: "src/assets/*",
-      components: "src/components/*",
-      styles: "src/styles/*",
-      types: "src/types/*.types.ts",
-      src: "src/*",
+      ["@src/components"]: "/src/components/index.ts",
+      ["@src/contexts"]: "/src/contexts/index.ts",
+      ["@src/types/*"]: "src/types/*",
     },
   },
 });

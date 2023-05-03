@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { MonthBudgetCalculator, Navbar } from "./components";
+import { MonthBudgetCalculator, Navbar } from "@src/components";
 
 export function App() {
   const [activeMenuItem, setActiveMenuItem] = useState(0);
