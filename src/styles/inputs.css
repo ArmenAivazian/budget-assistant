@@ -6,6 +6,7 @@ input[type="range"] {
     appearance: none;
     background: transparent;
     cursor: pointer;
+    padding: 0;
 }
 
 /* Removes default focus */
@@ -96,8 +97,6 @@ input[type="checkbox"]:focus {
 }
 
 input[type="checkbox"]:disabled {
-    --form-control-color: var(--form-control-disabled);
-
-    color: var(--form-control-disabled);
-    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .3;
 }

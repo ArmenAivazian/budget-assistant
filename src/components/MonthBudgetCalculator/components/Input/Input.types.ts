@@ -1,7 +1,24 @@
 import type { HTMLInputTypeAttribute } from "react";
 
-export interface InputProps {
+type BaseInputProps<T extends HTMLInputTypeAttribute> = {
   name: string;
-  type?: HTMLInputTypeAttribute;
-  setValue?: (value: string | boolean) => void;
+  type?: T;
+  disabled?: boolean;
+};
+
+interface TextInputProps
+  extends BaseInputProps<Exclude<HTMLInputTypeAttribute, "checkbox">> {
+  value: string;
+  isNumber?: boolean;
+  setValue: (value: string) => void;
 }
+
+interface CheckboxInputProps extends BaseInputProps<"checkbox"> {
+  value: boolean;
+  isNumber?: never;
+  setValue: (value: boolean) => void;
+}
+
+export type InputProps<T> = T extends "checkbox"
+  ? CheckboxInputProps
+  : TextInputProps;

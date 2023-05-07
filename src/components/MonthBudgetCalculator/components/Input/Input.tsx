@@ -1,49 +1,63 @@
-import { ChangeEventHandler, memo, useState } from "react";
+import { HTMLInputTypeAttribute, InputHTMLAttributes, memo } from "react";
 
 import type { InputProps } from "./Input.types";
 
 import { styles } from "./Input.styles";
 
 import { Label } from "./components";
-import { addSpaceAfterThirdDigit, convertStringHyphen } from "./utils";
+import { convertStringHyphen, formattedValue } from "./utils";
 
-export const Input = memo(function Input({
+const InputComponent = <T extends HTMLInputTypeAttribute>({
   name,
-  type = "text",
+  value,
+  type,
+  isNumber,
+  disabled,
   setValue,
-}: InputProps) {
-  const isRange = type === "range";
-  const isCheckbox = type === "checkbox";
+}: InputProps<T>) => {
   const hyphenName = convertStringHyphen(name);
-
-  const [inputValue, setInputValue] = useState(isRange ? "0" : "");
-  const [isInputChecked, setIsInputChecked] = useState(
-    isCheckbox ? false : undefined
-  );
-
-  const handleInputChange: ChangeEventHandler<HTMLInputElement> = ({
-    target: { value, checked },
-  }) => {
-    setValue?.(checked || value);
-    setIsInputChecked(checked);
-    setInputValue(addSpaceAfterThirdDigit(value.replace(/[^0-9.]/g, "")));
-  };
 
   const { text } = styles;
 
+  const inputProps: InputHTMLAttributes<HTMLInputElement> = {
+    type: type || "text",
+    name: hyphenName,
+    id: hyphenName,
+    autoComplete: hyphenName,
+    disabled,
+  };
+
+  if (typeof value === "boolean") {
+    return (
+      <>
+        <Label text={name} name={hyphenName} isDisabled={disabled} />
+        <input
+          checked={value}
+          onChange={() => setValue(!value)}
+          {...inputProps}
+        />
+      </>
+    );
+  }
+
   return (
     <>
-      <Label text={name} name={hyphenName} />
-      <input
-        type={type}
+      <Label
+        text={name}
         name={hyphenName}
-        id={hyphenName}
-        autoComplete={hyphenName}
-        className={type === "text" ? text : ""}
-        onChange={handleInputChange}
-        value={inputValue}
-        checked={isInputChecked}
+        isDisabled={disabled}
+        {...(type === "range" && { rangeValue: value })}
+      />
+      <input
+        value={value}
+        className={text}
+        onChange={({ target }) =>
+          setValue(formattedValue(target.value, !!isNumber))
+        }
+        {...inputProps}
       />
     </>
   );
-});
+};
+
+export const Input = memo(InputComponent) as typeof InputComponent;

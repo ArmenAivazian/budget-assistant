@@ -1,0 +1,1 @@
+export { getAmountDays } from "./getAmountDays";

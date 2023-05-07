@@ -1,2 +1,2 @@
 export { convertStringHyphen } from "./convertStringHyphen";
-export { addSpaceAfterThirdDigit } from "./addSpaceAfterThirdDigit";
+export { formattedValue } from "./formattedValue";
