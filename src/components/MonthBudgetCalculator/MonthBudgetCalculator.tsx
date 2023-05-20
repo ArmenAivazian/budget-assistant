@@ -1,5 +1,6 @@
+import { MonthCalcFieldNames } from "@src/constants";
 import { MonthBudgetCalculatorContext } from "@src/contexts";
-import { stringNumberToNumber } from "@src/utils";
+import { convertStringNumberToNumber } from "@src/utils";
 import { useContextSelector } from "use-context-selector";
 
 import {
@@ -78,14 +79,16 @@ export const MonthBudgetCalculator = () => {
   );
 
   const forMonth =
-    (stringNumberToNumber(statisticAmountSpent) / statisticPeriod) * 31;
+    (convertStringNumberToNumber(statisticAmountSpent) / statisticPeriod) * 31;
   const forInvestments =
-    (stringNumberToNumber(armenSalary) + stringNumberToNumber(nastiaSalary)) *
+    (convertStringNumberToNumber(armenSalary) +
+      convertStringNumberToNumber(nastiaSalary)) *
     (+investmentPercent / 100);
   const forArmy = forInvestments * (+investmentPartForArmy / 100);
 
   const differentPercent =
-    stringNumberToNumber(nastiaSalary) / stringNumberToNumber(armenSalary);
+    convertStringNumberToNumber(nastiaSalary) /
+    convertStringNumberToNumber(armenSalary);
 
   return (
     <div className="md:flex flex-[0_1_100%]">
@@ -95,13 +98,13 @@ export const MonthBudgetCalculator = () => {
             <Title text="💰 Salaries" />
             <Grid>
               <Input
-                name="Armen's salary"
+                name={MonthCalcFieldNames.armenSalary}
                 value={armenSalary}
                 isNumber
                 setValue={setArmenSalary}
               />
               <Input
-                name="Nastia's salary"
+                name={MonthCalcFieldNames.nastiaSalary}
                 value={nastiaSalary}
                 isNumber
                 setValue={setNastiaSalary}
@@ -113,7 +116,7 @@ export const MonthBudgetCalculator = () => {
             <Grid>
               <RangeDatePicker />
               <Input
-                name="Amount spent during this period"
+                name={MonthCalcFieldNames.statisticAmountSpent}
                 value={statisticAmountSpent}
                 isNumber
                 setValue={setStatisticAmountSpent}
@@ -125,7 +128,7 @@ export const MonthBudgetCalculator = () => {
             <Title text="💸 Future Expenses" />
             <Grid>
               <Input
-                name="100% expense"
+                name={MonthCalcFieldNames.futureExpenses}
                 value={futureExpenses}
                 isNumber
                 setValue={setFutureExpenses}
@@ -142,24 +145,25 @@ export const MonthBudgetCalculator = () => {
               text="For Army"
               value={
                 (forArmy -
-                  stringNumberToNumber(investmentComBackAlive) -
-                  stringNumberToNumber(investmentMilitaryBonds)) /
+                  convertStringNumberToNumber(investmentComBackAlive) -
+                  convertStringNumberToNumber(investmentMilitaryBonds)) /
                 2
               }
             />
             <ResultField
               text="For Armen"
               value={
-                stringNumberToNumber(armenSalary) -
-                stringNumberToNumber(armenSalary) * (+investmentPercent / 100) -
+                convertStringNumberToNumber(armenSalary) -
+                convertStringNumberToNumber(armenSalary) *
+                  (+investmentPercent / 100) -
                 forMonth * (1 - differentPercent)
               }
             />
             <ResultField
               text="For Nastia"
               value={
-                stringNumberToNumber(nastiaSalary) -
-                stringNumberToNumber(nastiaSalary) *
+                convertStringNumberToNumber(nastiaSalary) -
+                convertStringNumberToNumber(nastiaSalary) *
                   (+investmentPercent / 100) -
                 forMonth * differentPercent
               }

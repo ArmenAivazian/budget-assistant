@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { MonthCalcFieldNames } from "@src/constants";
 import { MonthBudgetCalculatorContext } from "@src/contexts";
 import { useContextSelector } from "use-context-selector";
 
@@ -53,14 +54,14 @@ export const InvestmentRow = () => {
       <Grid>
         <>
           <Input
-            name="Interest for investment"
+            name={MonthCalcFieldNames.investmentPercent}
             value={investmentPercent}
             type="range"
             setValue={setInvestmentPercent}
           />
 
           <Input
-            name="Helping the Army"
+            name={MonthCalcFieldNames.isHelpingArmy}
             type="checkbox"
             value={isHelpingArmy}
             disabled={!+investmentPercent}
@@ -68,7 +69,7 @@ export const InvestmentRow = () => {
           />
 
           <Input
-            name="Monthly aid to the Army"
+            name={MonthCalcFieldNames.isMonthlyAidToTheArmy}
             type="checkbox"
             value={isMonthlyAidToTheArmy}
             disabled={!isHelpingArmy || !+investmentPercent}
@@ -76,7 +77,7 @@ export const InvestmentRow = () => {
           />
 
           <Input
-            name="A part for the Army"
+            name={MonthCalcFieldNames.investmentPartForArmy}
             value={investmentPartForArmy}
             type="range"
             disabled={!isHelpingArmy || !+investmentPercent || !isHelpingArmy}
@@ -84,7 +85,7 @@ export const InvestmentRow = () => {
           />
 
           <Input
-            name="Military bonds"
+            name={MonthCalcFieldNames.investmentMilitaryBonds}
             value={investmentMilitaryBonds}
             isNumber
             disabled={
@@ -97,7 +98,7 @@ export const InvestmentRow = () => {
           />
 
           <Input
-            name="Come Back Alive"
+            name={MonthCalcFieldNames.investmentComBackAlive}
             value={investmentComBackAlive}
             isNumber
             disabled={

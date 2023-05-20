@@ -1,11 +1,13 @@
 import { HTMLInputTypeAttribute, InputHTMLAttributes, memo } from "react";
 
+import { convertStringToHyphenString } from "@src/utils";
+
 import type { InputProps } from "./Input.types";
 
 import { styles } from "./Input.styles";
 
 import { Label } from "./components";
-import { convertStringHyphen, formattedValue } from "./utils";
+import { formattedValue } from "./utils";
 
 const InputComponent = <T extends HTMLInputTypeAttribute>({
   name,
@@ -15,7 +17,7 @@ const InputComponent = <T extends HTMLInputTypeAttribute>({
   disabled,
   setValue,
 }: InputProps<T>) => {
-  const hyphenName = convertStringHyphen(name);
+  const hyphenName = convertStringToHyphenString(name);
 
   const { text } = styles;
 
@@ -54,6 +56,7 @@ const InputComponent = <T extends HTMLInputTypeAttribute>({
         onChange={({ target }) =>
           setValue(formattedValue(target.value, !!isNumber))
         }
+        onBlur={({ target }) => localStorage.setItem(hyphenName, target.value)}
         {...inputProps}
       />
     </>

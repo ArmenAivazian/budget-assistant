@@ -1,17 +1,20 @@
 import { useState } from "react";
 
+import {
+  MONTH_CALC_DATA_PICKER_DEFAULT_VALUES,
+  MonthCalcFieldNames,
+} from "@src/constants";
 import { MonthBudgetCalculatorContext } from "@src/contexts";
+import { getAmountDays } from "@src/utils";
 import Datepicker from "react-tailwindcss-datepicker";
 import { useContextSelector } from "use-context-selector";
 
 import { DateValueType } from "react-tailwindcss-datepicker/dist/types";
 
-import { getAmountDays } from "./utils";
-
 export const RangeDatePicker = () => {
   const [value, setValue] = useState<DateValueType>({
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: MONTH_CALC_DATA_PICKER_DEFAULT_VALUES.startData,
+    endDate: MONTH_CALC_DATA_PICKER_DEFAULT_VALUES.endData,
   });
 
   const setStatisticPeriod = useContextSelector(
@@ -33,7 +36,9 @@ export const RangeDatePicker = () => {
 
   return (
     <>
-      <label className="text-white">The first-last day of analysis:</label>
+      <label className="text-white">
+        {MonthCalcFieldNames.daysOfAnalytics}:
+      </label>
       <div>
         <Datepicker
           primaryColor="indigo"
@@ -45,6 +50,7 @@ export const RangeDatePicker = () => {
           toggleClassName="text-white"
           maxDate={new Date()}
           startWeekOn="mon"
+          useRange={false}
         />
       </div>
     </>

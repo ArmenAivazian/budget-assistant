@@ -2,16 +2,68 @@ import { useState } from "react";
 
 import { MonthBudgetCalculatorContext } from "@src/contexts";
 
+import {
+  MONTH_CALC_DATA_PICKER_DEFAULT_VALUES,
+  MonthCalcFieldNames,
+} from "./constants";
+import { convertStringToHyphenString, getAmountDays } from "./utils";
+
 export function ContextProviders({ children }: { children: JSX.Element }) {
-  const [armenSalary, setArmenSalary] = useState("");
-  const [nastiaSalary, setNastiaSalary] = useState("");
-  const [futureExpenses, setFutureExpenses] = useState("");
-  const [statisticPeriod, setStatisticPeriod] = useState(0);
-  const [investmentPercent, setInvestmentPercent] = useState("0");
-  const [statisticAmountSpent, setStatisticAmountSpent] = useState("");
-  const [investmentPartForArmy, setInvestmentPartForArmy] = useState("0");
-  const [investmentComBackAlive, setInvestmentComBackAlive] = useState("");
-  const [investmentMilitaryBonds, setInvestmentMilitaryBonds] = useState("");
+  const armenSalaryKey = convertStringToHyphenString(
+    MonthCalcFieldNames.armenSalary
+  );
+  const nastiaSalaryKey = convertStringToHyphenString(
+    MonthCalcFieldNames.nastiaSalary
+  );
+  const futureExpensesKey = convertStringToHyphenString(
+    MonthCalcFieldNames.futureExpenses
+  );
+  const investmentPercentKey = convertStringToHyphenString(
+    MonthCalcFieldNames.investmentPercent
+  );
+  const statisticAmountSpentKey = convertStringToHyphenString(
+    MonthCalcFieldNames.statisticAmountSpent
+  );
+  const investmentPartForArmyKey = convertStringToHyphenString(
+    MonthCalcFieldNames.investmentPartForArmy
+  );
+  const investmentComBackAliveKey = convertStringToHyphenString(
+    MonthCalcFieldNames.investmentComBackAlive
+  );
+  const investmentMilitaryBondsKey = convertStringToHyphenString(
+    MonthCalcFieldNames.investmentMilitaryBonds
+  );
+
+  const [statisticPeriod, setStatisticPeriod] = useState(
+    getAmountDays(
+      MONTH_CALC_DATA_PICKER_DEFAULT_VALUES.startData,
+      MONTH_CALC_DATA_PICKER_DEFAULT_VALUES.endData
+    )
+  );
+  const [armenSalary, setArmenSalary] = useState(
+    localStorage.getItem(armenSalaryKey) || ""
+  );
+  const [nastiaSalary, setNastiaSalary] = useState(
+    localStorage.getItem(nastiaSalaryKey) || ""
+  );
+  const [futureExpenses, setFutureExpenses] = useState(
+    localStorage.getItem(futureExpensesKey) || ""
+  );
+  const [investmentPercent, setInvestmentPercent] = useState(
+    localStorage.getItem(investmentPercentKey) || "0"
+  );
+  const [statisticAmountSpent, setStatisticAmountSpent] = useState(
+    localStorage.getItem(statisticAmountSpentKey) || ""
+  );
+  const [investmentPartForArmy, setInvestmentPartForArmy] = useState(
+    localStorage.getItem(investmentPartForArmyKey) || "0"
+  );
+  const [investmentComBackAlive, setInvestmentComBackAlive] = useState(
+    localStorage.getItem(investmentComBackAliveKey) || ""
+  );
+  const [investmentMilitaryBonds, setInvestmentMilitaryBonds] = useState(
+    localStorage.getItem(investmentMilitaryBondsKey) || ""
+  );
 
   const monthBudgetCalculatorValue = {
     armenSalary,
