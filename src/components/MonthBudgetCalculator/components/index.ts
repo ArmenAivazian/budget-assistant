@@ -5,3 +5,4 @@ export { Input } from "./Input/Input";
 export { Grid } from "./Grid/Grid";
 export { RangeDatePicker } from "./RangeDatePicker/RangeDatePicker";
 export { InvestmentRow } from "./InvestmentRow/InvestmentRow";
+export { ResultField } from "./ResultField/ResultField";

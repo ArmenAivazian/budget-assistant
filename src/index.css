@@ -15,6 +15,18 @@
         color: #fff;
     }
 
+    h2 {
+        font-weight: 700;
+        font-size: 22px;
+        color: #fff;
+    }
+
+    h3 {
+        font-weight: 700;
+        font-size: 18px;
+        color: #fff;
+    }
+
     @media (min-width: 768px) {
         html {
             font-size: 18px;
@@ -22,6 +34,14 @@
 
         h1 {
             font-size: 36px;
+        }
+
+        h2 {
+            font-size: 32px;
+        }
+
+        h3 {
+            font-size: 28px;
         }
     }
 }

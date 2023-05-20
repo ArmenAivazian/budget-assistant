@@ -7,6 +7,7 @@ import {
   Input,
   InvestmentRow,
   RangeDatePicker,
+  ResultField,
   Row,
   Title,
 } from "./components";
@@ -98,15 +99,13 @@ export const MonthBudgetCalculator = () => {
         </div>
       </Column>
       <Column>
-        <div className="flex-1 overflow-y-auto"></div>
-
-        <div className="border-t border-gray-800 px-4 py-3 sm:px-6">
-          <a
-            href="#"
-            className="flex items-center justify-center rounded-md border border-transparent bg-gray-800 px-6 py-3  text-lg font-bold text-white shadow-sm hover:rounded-none"
-          >
-            Save
-          </a>
+        <div className="flex-1 overflow-y-auto ">
+          <div className="grid md:grid-cols-[auto_1fr] grid-cols-[auto_1fr_auto_1fr] items-center md:p-6 p-3 gap-2">
+            <ResultField text="For Investments" value="0" />
+            <ResultField text="For Army" value="0" />
+            <ResultField text="For Armen" value="0" />
+            <ResultField text="For Nastia" value="0" />
+          </div>
         </div>
       </Column>
     </div>

@@ -1,4 +1,4 @@
-import type { JSXElements } from "types/global";
+import type { JSXElements } from "@src/types/global";
 
 export const Row = ({ children }: { children: JSXElements }) => {
   return (
