@@ -96,7 +96,7 @@ input[type="checkbox"]:focus {
     outline: -webkit-focus-ring-color auto 1px;
 }
 
-input[type="checkbox"]:disabled {
+input:disabled {
     pointer-events: none;
     opacity: .3;
 }

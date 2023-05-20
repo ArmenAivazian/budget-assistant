@@ -19,9 +19,37 @@ export const InvestmentRow = () => {
     ({ setInvestmentPercent }) => setInvestmentPercent
   );
 
+  const investmentPartForArmy = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ investmentPartForArmy }) => investmentPartForArmy
+  );
+
+  const setInvestmentPartForArmy = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ setInvestmentPartForArmy }) => setInvestmentPartForArmy
+  );
+  const investmentMilitaryBonds = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ investmentMilitaryBonds }) => investmentMilitaryBonds
+  );
+
+  const setInvestmentMilitaryBonds = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ setInvestmentMilitaryBonds }) => setInvestmentMilitaryBonds
+  );
+  const investmentComBackAlive = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ investmentComBackAlive }) => investmentComBackAlive
+  );
+
+  const setInvestmentComBackAlive = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ setInvestmentComBackAlive }) => setInvestmentComBackAlive
+  );
+
   return (
     <Row>
-      <Title text={`🕛 Investment ${investmentPercent}%`} />
+      <Title text={`🕛 Investment`} />
       <Grid>
         <>
           <Input
@@ -43,8 +71,42 @@ export const InvestmentRow = () => {
             name="Monthly aid to the Army"
             type="checkbox"
             value={isMonthlyAidToTheArmy}
-            disabled={!+investmentPercent || !isHelpingArmy}
+            disabled={!isHelpingArmy || !+investmentPercent}
             setValue={setIsMonthlyAidToTheArmy}
+          />
+
+          <Input
+            name="A part for the Army"
+            value={investmentPartForArmy}
+            type="range"
+            disabled={!isHelpingArmy || !+investmentPercent || !isHelpingArmy}
+            setValue={setInvestmentPartForArmy}
+          />
+
+          <Input
+            name="Military bonds"
+            value={investmentMilitaryBonds}
+            isNumber
+            disabled={
+              !isMonthlyAidToTheArmy ||
+              !+investmentPercent ||
+              !isHelpingArmy ||
+              !+investmentPartForArmy
+            }
+            setValue={setInvestmentMilitaryBonds}
+          />
+
+          <Input
+            name="Come Back Alive"
+            value={investmentComBackAlive}
+            isNumber
+            disabled={
+              !isMonthlyAidToTheArmy ||
+              !+investmentPercent ||
+              !isHelpingArmy ||
+              !+investmentPartForArmy
+            }
+            setValue={setInvestmentComBackAlive}
           />
         </>
       </Grid>
