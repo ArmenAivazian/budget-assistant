@@ -9,6 +9,7 @@ export default defineConfig({
       ["@src/components"]: "/src/components/index.ts",
       ["@src/contexts"]: "/src/contexts/index.ts",
       ["@src/types/*"]: "src/types/*",
+      ["@src/utils"]: "/src/utils/index.ts",
     },
   },
 });

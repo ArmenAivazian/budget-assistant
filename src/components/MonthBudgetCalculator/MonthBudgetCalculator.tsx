@@ -1,4 +1,5 @@
 import { MonthBudgetCalculatorContext } from "@src/contexts";
+import { stringNumberToNumber } from "@src/utils";
 import { useContextSelector } from "use-context-selector";
 
 import {
@@ -51,6 +52,41 @@ export const MonthBudgetCalculator = () => {
     ({ setFutureExpenses }) => setFutureExpenses
   );
 
+  const statisticPeriod = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ statisticPeriod }) => statisticPeriod
+  );
+
+  const investmentPercent = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ investmentPercent }) => investmentPercent
+  );
+
+  const investmentPartForArmy = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ investmentPartForArmy }) => investmentPartForArmy
+  );
+
+  const investmentComBackAlive = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ investmentComBackAlive }) => investmentComBackAlive
+  );
+
+  const investmentMilitaryBonds = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ investmentMilitaryBonds }) => investmentMilitaryBonds
+  );
+
+  const forMonth =
+    (stringNumberToNumber(statisticAmountSpent) / statisticPeriod) * 31;
+  const forInvestments =
+    (stringNumberToNumber(armenSalary) + stringNumberToNumber(nastiaSalary)) *
+    (+investmentPercent / 100);
+  const forArmy = forInvestments * (+investmentPartForArmy / 100);
+
+  const differentPercent =
+    stringNumberToNumber(nastiaSalary) / stringNumberToNumber(armenSalary);
+
   return (
     <div className="md:flex flex-[0_1_100%]">
       <Column>
@@ -101,11 +137,42 @@ export const MonthBudgetCalculator = () => {
       <Column>
         <div className="flex-1 overflow-y-auto ">
           <div className="grid md:grid-cols-[auto_1fr] grid-cols-[auto_1fr_auto_1fr] items-center md:p-6 p-3 gap-2">
-            <ResultField text="For Investments" value="0" />
-            <ResultField text="For Army" value="0" />
-            <ResultField text="For Armen" value="0" />
-            <ResultField text="For Nastia" value="0" />
+            <ResultField text="For Investments" value={forInvestments} />
+            <ResultField
+              text="For Army"
+              value={
+                (forArmy -
+                  stringNumberToNumber(investmentComBackAlive) -
+                  stringNumberToNumber(investmentMilitaryBonds)) /
+                2
+              }
+            />
+            <ResultField
+              text="For Armen"
+              value={
+                stringNumberToNumber(armenSalary) -
+                stringNumberToNumber(armenSalary) * (+investmentPercent / 100) -
+                forMonth * (1 - differentPercent)
+              }
+            />
+            <ResultField
+              text="For Nastia"
+              value={
+                stringNumberToNumber(nastiaSalary) -
+                stringNumberToNumber(nastiaSalary) *
+                  (+investmentPercent / 100) -
+                forMonth * differentPercent
+              }
+            />
           </div>
+        </div>
+        <div className="border-t border-gray-800 px-4 py-3 sm:px-6">
+          <a
+            href="#"
+            className="flex items-center justify-center rounded-md border border-transparent bg-gray-800 px-6 py-3  text-lg font-bold text-white shadow-sm hover:rounded-none"
+          >
+            Save
+          </a>
         </div>
       </Column>
     </div>
