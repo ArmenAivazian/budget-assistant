@@ -25,3 +25,7 @@ dist-ssr
 
 # Custom stuff
 concept
+
+# firebase
+.firebase
+.env

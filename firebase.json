@@ -1,0 +1,6 @@
+{
+  "hosting": {
+    "site": "budget-assistant",
+    "public": "dist"
+  }
+}
