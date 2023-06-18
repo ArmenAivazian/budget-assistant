@@ -1,7 +1,4 @@
-export function getAmountDays(
-  startDate: string | Date,
-  endDate: string | Date
-): number {
+export function getAmountDays(startDate: string, endDate: string): number {
   const start = typeof startDate === "string" ? new Date(startDate) : startDate;
   const end = typeof endDate === "string" ? new Date(endDate) : endDate;
 

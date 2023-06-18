@@ -3,7 +3,8 @@ import { useState } from "react";
 import { MonthBudgetCalculatorContext } from "@src/contexts";
 
 import {
-  MONTH_CALC_DATA_PICKER_DEFAULT_VALUES,
+  MONTH_CALC_DATE_DEFAULT_END,
+  MONTH_CALC_DATE_DEFAULT_START,
   MonthCalcFieldNames,
 } from "./constants";
 import { convertStringToHyphenString, getAmountDays } from "./utils";
@@ -35,10 +36,7 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   );
 
   const [statisticPeriod, setStatisticPeriod] = useState(
-    getAmountDays(
-      MONTH_CALC_DATA_PICKER_DEFAULT_VALUES.startData,
-      MONTH_CALC_DATA_PICKER_DEFAULT_VALUES.endData
-    )
+    getAmountDays(MONTH_CALC_DATE_DEFAULT_START, MONTH_CALC_DATE_DEFAULT_END)
   );
   const [armenSalary, setArmenSalary] = useState(
     localStorage.getItem(armenSalaryKey) || ""

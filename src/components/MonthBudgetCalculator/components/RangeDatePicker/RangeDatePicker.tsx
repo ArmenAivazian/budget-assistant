@@ -1,58 +1,60 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 import {
-  MONTH_CALC_DATA_PICKER_DEFAULT_VALUES,
+  MONTH_CALC_DATE_DEFAULT_END,
+  MONTH_CALC_DATE_DEFAULT_START,
   MonthCalcFieldNames,
 } from "@src/constants";
 import { MonthBudgetCalculatorContext } from "@src/contexts";
 import { getAmountDays } from "@src/utils";
-import Datepicker from "react-tailwindcss-datepicker";
 import { useContextSelector } from "use-context-selector";
 
-import { DateValueType } from "react-tailwindcss-datepicker/dist/types";
+import { styles } from "./RangeDatePicker.styles";
 
 export const RangeDatePicker = () => {
-  const [value, setValue] = useState<DateValueType>({
-    startDate: MONTH_CALC_DATA_PICKER_DEFAULT_VALUES.startData,
-    endDate: MONTH_CALC_DATA_PICKER_DEFAULT_VALUES.endData,
-  });
+  const [startDate, setStartDate] = useState(MONTH_CALC_DATE_DEFAULT_START);
+  const [endDate, setEndDate] = useState(MONTH_CALC_DATE_DEFAULT_END);
 
   const setStatisticPeriod = useContextSelector(
     MonthBudgetCalculatorContext,
     ({ setStatisticPeriod }) => setStatisticPeriod
   );
 
-  const handleValueChange = (newValue: DateValueType) => {
-    setValue(newValue);
+  const handleValueChange = (type: "start" | "end") => {
+    const isStartDate = type === "start";
 
-    if (newValue === null) return;
-
-    const { startDate, endDate } = newValue;
-
-    if (startDate === null || endDate === null) return;
-
-    setStatisticPeriod(getAmountDays(startDate, endDate));
+    return ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+      if (isStartDate) {
+        setStartDate(value);
+        setStatisticPeriod(getAmountDays(value, endDate));
+      } else {
+        setEndDate(value);
+        setStatisticPeriod(getAmountDays(startDate, value));
+      }
+    };
   };
 
   return (
     <>
       <label className="text-white">
-        {MonthCalcFieldNames.daysOfAnalytics}:
+        {MonthCalcFieldNames.daysOfAnalyticsFirst}:
       </label>
-      <div>
-        <Datepicker
-          primaryColor="indigo"
-          separator="—"
-          value={value}
-          onChange={handleValueChange}
-          displayFormat={"DD/MM/YYYY"}
-          inputClassName="!font-bold !bg-gray-800 border-0 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-gray-800"
-          toggleClassName="text-white"
-          maxDate={new Date()}
-          startWeekOn="mon"
-          useRange={false}
-        />
-      </div>
+      <input
+        type="date"
+        value={startDate}
+        onChange={handleValueChange("start")}
+        className={styles.input}
+      />
+
+      <label className="text-white">
+        {MonthCalcFieldNames.daysOfAnalyticsLast}:
+      </label>
+      <input
+        type="date"
+        value={endDate}
+        onChange={handleValueChange("end")}
+        className={styles.input}
+      />
     </>
   );
 };

@@ -1,4 +1,5 @@
-export const MONTH_CALC_DATA_PICKER_DEFAULT_VALUES = {
-  startData: new Date("2023-03-25"),
-  endData: new Date(),
-};
+export const MONTH_CALC_DATE_DEFAULT_START = "2023-03-25";
+
+export const MONTH_CALC_DATE_DEFAULT_END = new Date()
+  .toISOString()
+  .split("T")[0];

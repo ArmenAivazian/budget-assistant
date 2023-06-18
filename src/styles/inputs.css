@@ -100,3 +100,7 @@ input:disabled {
     pointer-events: none;
     opacity: .3;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
