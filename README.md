@@ -1,7 +1,5 @@
 # Budget Assistant 💰
 
----
-
 #### Project Status: `In Progress 🚧`
 
 **Budget Assistant** will help you control the joint budget:
