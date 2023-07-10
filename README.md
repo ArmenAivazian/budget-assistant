@@ -1,4 +1,4 @@
-# <center>Budget Assistant 💰</center>
+# Budget Assistant 💰
 
 ---
 
