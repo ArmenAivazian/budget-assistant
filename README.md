@@ -16,19 +16,19 @@
         <th>Description</th>
     </tr>
     <tr>
-        <td><code>dev</code></td>
+        <td><code>pnpm dev</code></td>
         <td>Run development mode</td>
     </tr>
     <tr>
-        <td><code>build</code></td>
+        <td><code>pnpm build</code></td>
         <td>Build project</td>
     </tr>
     <tr>
-        <td><code>preview</code></td>
+        <td><code>pnpm preview</code></td>
         <td>Start builded project</td>
     </tr>
     <tr>
-        <td><code>deploy</code></td>
+        <td><code>pnpm deploy</code></td>
         <td>Push project to production (Firebase)</td>
     </tr>
 </table>
