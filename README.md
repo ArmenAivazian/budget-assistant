@@ -41,7 +41,6 @@
 
 ### Features
 
-- Implement field "Future Expenses"
 - Implement button "Save"
 - Print for information how much you plan to spend per month
 - Release tab "Helpful Data"

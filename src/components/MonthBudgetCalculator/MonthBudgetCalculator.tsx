@@ -93,11 +93,11 @@ export const MonthBudgetCalculator = () => {
     convertStrNumToNum(armenSalary) + convertStrNumToNum(nastiaSalary);
   const expectExpenseDay =
     convertStrNumToNum(statisticAmountSpent) / statisticPeriod;
-  const expectExpenseMonth =
-    expectExpenseDay * 31 - convertStrNumToNum(currentBalance);
+  const startUpCosts =
+    convertStrNumToNum(futureExpenses) - convertStrNumToNum(currentBalance);
+  const expectExpenseMonth = expectExpenseDay * 31 + startUpCosts;
   const forInvestments = sumSalaries * (+investmentPercent / 100);
   const forArmy = forInvestments * (+investmentPartForArmy / 100);
-
   const differentPercent =
     convertStrNumToNum(nastiaSalary) / convertStrNumToNum(armenSalary);
 
