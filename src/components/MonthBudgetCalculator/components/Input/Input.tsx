@@ -1,6 +1,6 @@
 import { HTMLInputTypeAttribute, InputHTMLAttributes, memo } from "react";
 
-import { convertStringToHyphenString } from "@src/utils";
+import { convertStrToHyphenStr } from "@src/utils";
 
 import type { InputProps } from "./Input.types";
 
@@ -15,9 +15,10 @@ const InputComponent = <T extends HTMLInputTypeAttribute>({
   type,
   isNumber,
   disabled,
+  withoutLabel,
   setValue,
 }: InputProps<T>) => {
-  const hyphenName = convertStringToHyphenString(name);
+  const hyphenName = convertStrToHyphenStr(name);
 
   const { text } = styles;
 
@@ -44,12 +45,14 @@ const InputComponent = <T extends HTMLInputTypeAttribute>({
 
   return (
     <>
-      <Label
-        text={name}
-        name={hyphenName}
-        isDisabled={disabled}
-        {...(type === "range" && { rangeValue: value })}
-      />
+      {!withoutLabel && (
+        <Label
+          text={name}
+          name={hyphenName}
+          isDisabled={disabled}
+          {...(type === "range" && { rangeValue: value })}
+        />
+      )}
       <input
         value={value}
         className={text}

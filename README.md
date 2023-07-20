@@ -43,10 +43,10 @@
 
 - Implement field "Future Expenses"
 - Implement button "Save"
-- Ability to calculate the amount of refund or payment after the end of the month
 - Print for information how much you plan to spend per month
 - Release tab "Helpful Data"
 - Add the ability to customize for the user (choose names, number of family members, types of investments, etc.)
+- Add ukrainian language
 
 ### Tech Improvements
 
@@ -55,3 +55,6 @@
 - Rewrite import sorting
 - Create CI / CD process
 - Add tests
+- Improve ContextProviders 
+    -  make util for creating new context
+    - move `convertStrNumToNum` to this level

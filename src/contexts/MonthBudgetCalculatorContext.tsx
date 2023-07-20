@@ -3,6 +3,7 @@ import { createContext } from "use-context-selector";
 interface Type {
   armenSalary: string;
   nastiaSalary: string;
+  currentBalance: string;
   futureExpenses: string;
   statisticPeriod: number;
   investmentPercent: string;
@@ -12,6 +13,7 @@ interface Type {
   investmentMilitaryBonds: string;
   setArmenSalary: (value: string) => void;
   setNastiaSalary: (value: string) => void;
+  setCurrentBalance: (value: string) => void;
   setFutureExpenses: (value: string) => void;
   setStatisticPeriod: (value: number) => void;
   setInvestmentPercent: (value: string) => void;

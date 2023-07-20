@@ -4,6 +4,7 @@ type BaseInputProps<T extends HTMLInputTypeAttribute> = {
   name: string;
   type?: T;
   disabled?: boolean;
+  withoutLabel?: boolean;
 };
 
 interface TextInputProps

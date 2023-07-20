@@ -1,3 +1,3 @@
-export { convertStringNumberToNumber } from "./convertStringNumberToNumber";
-export { convertStringToHyphenString } from "./convertStringToHyphenString";
+export { convertStrNumToNum } from "./convertStrNumToNum";
+export { convertStrToHyphenStr } from "./convertStrToHyphenStr";
 export { getAmountDays } from "./getAmountDays";

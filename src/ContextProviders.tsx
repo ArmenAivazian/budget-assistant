@@ -7,31 +7,32 @@ import {
   MONTH_CALC_DATE_DEFAULT_START,
   MonthCalcFieldNames,
 } from "./constants";
-import { convertStringToHyphenString, getAmountDays } from "./utils";
+import { convertStrToHyphenStr, getAmountDays } from "./utils";
 
 export function ContextProviders({ children }: { children: JSX.Element }) {
-  const armenSalaryKey = convertStringToHyphenString(
-    MonthCalcFieldNames.armenSalary
-  );
-  const nastiaSalaryKey = convertStringToHyphenString(
+  const armenSalaryKey = convertStrToHyphenStr(MonthCalcFieldNames.armenSalary);
+  const nastiaSalaryKey = convertStrToHyphenStr(
     MonthCalcFieldNames.nastiaSalary
   );
-  const futureExpensesKey = convertStringToHyphenString(
+  const currentBalanceKey = convertStrToHyphenStr(
+    MonthCalcFieldNames.currentBalance
+  );
+  const futureExpensesKey = convertStrToHyphenStr(
     MonthCalcFieldNames.futureExpenses
   );
-  const investmentPercentKey = convertStringToHyphenString(
+  const investmentPercentKey = convertStrToHyphenStr(
     MonthCalcFieldNames.investmentPercent
   );
-  const statisticAmountSpentKey = convertStringToHyphenString(
+  const statisticAmountSpentKey = convertStrToHyphenStr(
     MonthCalcFieldNames.statisticAmountSpent
   );
-  const investmentPartForArmyKey = convertStringToHyphenString(
+  const investmentPartForArmyKey = convertStrToHyphenStr(
     MonthCalcFieldNames.investmentPartForArmy
   );
-  const investmentComBackAliveKey = convertStringToHyphenString(
+  const investmentComBackAliveKey = convertStrToHyphenStr(
     MonthCalcFieldNames.investmentComBackAlive
   );
-  const investmentMilitaryBondsKey = convertStringToHyphenString(
+  const investmentMilitaryBondsKey = convertStrToHyphenStr(
     MonthCalcFieldNames.investmentMilitaryBonds
   );
 
@@ -43,6 +44,9 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   );
   const [nastiaSalary, setNastiaSalary] = useState(
     localStorage.getItem(nastiaSalaryKey) || ""
+  );
+  const [currentBalance, setCurrentBalance] = useState(
+    localStorage.getItem(currentBalanceKey) || ""
   );
   const [futureExpenses, setFutureExpenses] = useState(
     localStorage.getItem(futureExpensesKey) || ""
@@ -66,6 +70,7 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   const monthBudgetCalculatorValue = {
     armenSalary,
     nastiaSalary,
+    currentBalance,
     futureExpenses,
     statisticPeriod,
     investmentPercent,
@@ -75,6 +80,7 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
     investmentMilitaryBonds,
     setArmenSalary,
     setNastiaSalary,
+    setCurrentBalance,
     setFutureExpenses,
     setStatisticPeriod,
     setInvestmentPercent,

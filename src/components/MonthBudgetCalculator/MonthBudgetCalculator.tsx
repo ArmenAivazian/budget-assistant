@@ -1,6 +1,6 @@
 import { MonthCalcFieldNames } from "@src/constants";
 import { MonthBudgetCalculatorContext } from "@src/contexts";
-import { convertStringNumberToNumber } from "@src/utils";
+import { convertStrNumToNum } from "@src/utils";
 import { useContextSelector } from "use-context-selector";
 
 import {
@@ -13,6 +13,7 @@ import {
   Row,
   Title,
 } from "./components";
+import { getPersonalBudget } from "./utils";
 
 export const MonthBudgetCalculator = () => {
   const armenSalary = useContextSelector(
@@ -43,9 +44,19 @@ export const MonthBudgetCalculator = () => {
     ({ setStatisticAmountSpent }) => setStatisticAmountSpent
   );
 
+  const currentBalance = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ currentBalance }) => currentBalance
+  );
+
   const futureExpenses = useContextSelector(
     MonthBudgetCalculatorContext,
     ({ futureExpenses }) => futureExpenses
+  );
+
+  const setCurrentBalance = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ setCurrentBalance }) => setCurrentBalance
   );
 
   const setFutureExpenses = useContextSelector(
@@ -78,17 +89,17 @@ export const MonthBudgetCalculator = () => {
     ({ investmentMilitaryBonds }) => investmentMilitaryBonds
   );
 
-  const forMonth =
-    (convertStringNumberToNumber(statisticAmountSpent) / statisticPeriod) * 31;
-  const forInvestments =
-    (convertStringNumberToNumber(armenSalary) +
-      convertStringNumberToNumber(nastiaSalary)) *
-    (+investmentPercent / 100);
+  const sumSalaries =
+    convertStrNumToNum(armenSalary) + convertStrNumToNum(nastiaSalary);
+  const expectExpenseDay =
+    convertStrNumToNum(statisticAmountSpent) / statisticPeriod;
+  const expectExpenseMonth =
+    expectExpenseDay * 31 - convertStrNumToNum(currentBalance);
+  const forInvestments = sumSalaries * (+investmentPercent / 100);
   const forArmy = forInvestments * (+investmentPartForArmy / 100);
 
   const differentPercent =
-    convertStringNumberToNumber(nastiaSalary) /
-    convertStringNumberToNumber(armenSalary);
+    convertStrNumToNum(nastiaSalary) / convertStrNumToNum(armenSalary);
 
   return (
     <div className="md:flex flex-[0_1_100%]">
@@ -125,13 +136,26 @@ export const MonthBudgetCalculator = () => {
           </Row>
           <InvestmentRow />
           <Row>
+            <Title text="🕳 Current Balance" />
+            <Grid withoutLabel>
+              <Input
+                name={MonthCalcFieldNames.currentBalance}
+                value={currentBalance}
+                setValue={setCurrentBalance}
+                isNumber
+                withoutLabel
+              />
+            </Grid>
+          </Row>
+          <Row>
             <Title text="💸 Future Expenses" />
-            <Grid>
+            <Grid withoutLabel>
               <Input
                 name={MonthCalcFieldNames.futureExpenses}
                 value={futureExpenses}
-                isNumber
                 setValue={setFutureExpenses}
+                isNumber
+                withoutLabel
               />
             </Grid>
           </Row>
@@ -145,28 +169,30 @@ export const MonthBudgetCalculator = () => {
               text="For Army"
               value={
                 (forArmy -
-                  convertStringNumberToNumber(investmentComBackAlive) -
-                  convertStringNumberToNumber(investmentMilitaryBonds)) /
+                  convertStrNumToNum(investmentComBackAlive) -
+                  convertStrNumToNum(investmentMilitaryBonds)) /
                 2
               }
             />
             <ResultField
               text="For Armen"
-              value={
-                convertStringNumberToNumber(armenSalary) -
-                convertStringNumberToNumber(armenSalary) *
-                  (+investmentPercent / 100) -
-                forMonth * (1 - differentPercent)
-              }
+              value={getPersonalBudget(
+                armenSalary,
+                investmentPercent,
+                expectExpenseMonth,
+                differentPercent,
+                armenSalary > nastiaSalary
+              )}
             />
             <ResultField
               text="For Nastia"
-              value={
-                convertStringNumberToNumber(nastiaSalary) -
-                convertStringNumberToNumber(nastiaSalary) *
-                  (+investmentPercent / 100) -
-                forMonth * differentPercent
-              }
+              value={getPersonalBudget(
+                nastiaSalary,
+                investmentPercent,
+                expectExpenseMonth,
+                differentPercent,
+                nastiaSalary > armenSalary
+              )}
             />
           </div>
         </div>

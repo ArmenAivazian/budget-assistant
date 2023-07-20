@@ -11,4 +11,5 @@ export enum MonthCalcFieldNames {
   investmentMilitaryBonds = "Military bonds",
   investmentComBackAlive = "Come Back Alive",
   futureExpenses = "Future expenses",
+  currentBalance = "Current balance",
 }
