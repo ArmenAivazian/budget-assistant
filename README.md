@@ -55,5 +55,5 @@
 - Create CI / CD process
 - Add tests
 - Improve ContextProviders 
-    -  make util for creating new context
+    - make util for creating new context
     - move `convertStrNumToNum` to this level
