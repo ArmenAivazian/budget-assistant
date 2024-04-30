@@ -1,3 +1,4 @@
+import { Input, Title } from "@src/components";
 import { MonthCalcFieldNames } from "@src/constants";
 import { MonthBudgetCalculatorContext } from "@src/contexts";
 import { convertStrNumToNum } from "@src/utils";
@@ -6,12 +7,10 @@ import { useContextSelector } from "use-context-selector";
 import {
   Column,
   Grid,
-  Input,
   InvestmentRow,
   RangeDatePicker,
   ResultField,
   Row,
-  Title,
 } from "./components";
 import { getPersonalBudget } from "./utils";
 

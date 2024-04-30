@@ -8,7 +8,7 @@
 3. Ability to customize investments
 4. More in the future...
 
-## Commands
+## ✊ Commands
 
 <table>
     <tr>
@@ -37,13 +37,12 @@
 
 <sub><sub>\*\* You can get this variables from Firebase cabinet</sub></sub>
 
-## ToDo List
+## 🎯 ToDo List
 
 ### Features
 
 - Implement button "Save"
 - Print for information how much you plan to spend per month
-- Release tab "Helpful Data"
 - Add the ability to customize for the user (choose names, number of family members, types of investments, etc.)
 - Add ukrainian language
 
