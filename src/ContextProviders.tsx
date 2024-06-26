@@ -26,14 +26,14 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   const statisticAmountSpentKey = convertStrToHyphenStr(
     MonthCalcFieldNames.statisticAmountSpent
   );
-  const investmentPartForArmyKey = convertStrToHyphenStr(
-    MonthCalcFieldNames.investmentPartForArmy
+  const donatePercentKey = convertStrToHyphenStr(
+    MonthCalcFieldNames.donatePercent
   );
   const investmentComBackAliveKey = convertStrToHyphenStr(
-    MonthCalcFieldNames.investmentComBackAlive
+    MonthCalcFieldNames.comeBackAliveDonate
   );
   const investmentMilitaryBondsKey = convertStrToHyphenStr(
-    MonthCalcFieldNames.investmentMilitaryBonds
+    MonthCalcFieldNames.militaryBonds
   );
 
   const [statisticPeriod, setStatisticPeriod] = useState(
@@ -57,13 +57,13 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   const [statisticAmountSpent, setStatisticAmountSpent] = useState(
     localStorage.getItem(statisticAmountSpentKey) || ""
   );
-  const [investmentPartForArmy, setInvestmentPartForArmy] = useState(
-    localStorage.getItem(investmentPartForArmyKey) || "0"
+  const [donatePercent, setDonatePercent] = useState(
+    localStorage.getItem(donatePercentKey) || "0"
   );
-  const [investmentComBackAlive, setInvestmentComBackAlive] = useState(
+  const [comeBackAliveDonate, setComeBackAliveDonate] = useState(
     localStorage.getItem(investmentComBackAliveKey) || ""
   );
-  const [investmentMilitaryBonds, setInvestmentMilitaryBonds] = useState(
+  const [militaryBonds, setMilitaryBonds] = useState(
     localStorage.getItem(investmentMilitaryBondsKey) || ""
   );
 
@@ -75,9 +75,9 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
     statisticPeriod,
     investmentPercent,
     statisticAmountSpent,
-    investmentPartForArmy,
-    investmentComBackAlive,
-    investmentMilitaryBonds,
+    donatePercent,
+    comeBackAliveDonate,
+    militaryBonds,
     setArmenSalary,
     setNastiaSalary,
     setCurrentBalance,
@@ -85,9 +85,9 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
     setStatisticPeriod,
     setInvestmentPercent,
     setStatisticAmountSpent,
-    setInvestmentPartForArmy,
-    setInvestmentComBackAlive,
-    setInvestmentMilitaryBonds,
+    setDonatePercent,
+    setComeBackAliveDonate,
+    setMilitaryBonds,
   };
 
   return (

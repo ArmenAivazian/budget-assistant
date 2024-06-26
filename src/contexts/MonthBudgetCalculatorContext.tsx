@@ -8,9 +8,9 @@ interface Type {
   statisticPeriod: number;
   investmentPercent: string;
   statisticAmountSpent: string;
-  investmentPartForArmy: string;
-  investmentComBackAlive: string;
-  investmentMilitaryBonds: string;
+  donatePercent: string;
+  comeBackAliveDonate: string;
+  militaryBonds: string;
   setArmenSalary: (value: string) => void;
   setNastiaSalary: (value: string) => void;
   setCurrentBalance: (value: string) => void;
@@ -18,9 +18,9 @@ interface Type {
   setStatisticPeriod: (value: number) => void;
   setInvestmentPercent: (value: string) => void;
   setStatisticAmountSpent: (value: string) => void;
-  setInvestmentPartForArmy: (value: string) => void;
-  setInvestmentComBackAlive: (value: string) => void;
-  setInvestmentMilitaryBonds: (value: string) => void;
+  setDonatePercent: (value: string) => void;
+  setComeBackAliveDonate: (value: string) => void;
+  setMilitaryBonds: (value: string) => void;
 }
 
 export const MonthBudgetCalculatorContext = createContext<Type>(null as any);

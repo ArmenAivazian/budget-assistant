@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { MonthCalcFieldNames } from "@src/constants";
 import { MonthBudgetCalculatorContext } from "@src/contexts";
 import { useContextSelector } from "use-context-selector";
@@ -7,9 +5,6 @@ import { useContextSelector } from "use-context-selector";
 import { Grid, Input, Row, Title } from "../";
 
 export const InvestmentRow = () => {
-  const [isHelpingArmy, setIsHelpingArmy] = useState(false);
-  const [isMonthlyAidToTheArmy, setIsMonthlyAidToTheArmy] = useState(false);
-
   const investmentPercent = useContextSelector(
     MonthBudgetCalculatorContext,
     ({ investmentPercent }) => investmentPercent
@@ -20,32 +15,32 @@ export const InvestmentRow = () => {
     ({ setInvestmentPercent }) => setInvestmentPercent
   );
 
-  const investmentPartForArmy = useContextSelector(
+  const donatePercent = useContextSelector(
     MonthBudgetCalculatorContext,
-    ({ investmentPartForArmy }) => investmentPartForArmy
+    ({ donatePercent }) => donatePercent
   );
 
-  const setInvestmentPartForArmy = useContextSelector(
+  const setDonatePercent = useContextSelector(
     MonthBudgetCalculatorContext,
-    ({ setInvestmentPartForArmy }) => setInvestmentPartForArmy
+    ({ setDonatePercent }) => setDonatePercent
   );
-  const investmentMilitaryBonds = useContextSelector(
+  const militaryBonds = useContextSelector(
     MonthBudgetCalculatorContext,
-    ({ investmentMilitaryBonds }) => investmentMilitaryBonds
-  );
-
-  const setInvestmentMilitaryBonds = useContextSelector(
-    MonthBudgetCalculatorContext,
-    ({ setInvestmentMilitaryBonds }) => setInvestmentMilitaryBonds
-  );
-  const investmentComBackAlive = useContextSelector(
-    MonthBudgetCalculatorContext,
-    ({ investmentComBackAlive }) => investmentComBackAlive
+    ({ militaryBonds }) => militaryBonds
   );
 
-  const setInvestmentComBackAlive = useContextSelector(
+  const setMilitaryBonds = useContextSelector(
     MonthBudgetCalculatorContext,
-    ({ setInvestmentComBackAlive }) => setInvestmentComBackAlive
+    ({ setMilitaryBonds }) => setMilitaryBonds
+  );
+  const comeBackAliveDonate = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ comeBackAliveDonate }) => comeBackAliveDonate
+  );
+
+  const setComeBackAliveDonate = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ setComeBackAliveDonate }) => setComeBackAliveDonate
   );
 
   return (
@@ -61,53 +56,24 @@ export const InvestmentRow = () => {
           />
 
           <Input
-            name={MonthCalcFieldNames.isHelpingArmy}
-            type="checkbox"
-            value={isHelpingArmy}
-            disabled={!+investmentPercent}
-            setValue={setIsHelpingArmy}
-          />
-
-          <Input
-            name={MonthCalcFieldNames.isMonthlyAidToTheArmy}
-            type="checkbox"
-            value={isMonthlyAidToTheArmy}
-            disabled={!isHelpingArmy || !+investmentPercent}
-            setValue={setIsMonthlyAidToTheArmy}
-          />
-
-          <Input
-            name={MonthCalcFieldNames.investmentPartForArmy}
-            value={investmentPartForArmy}
+            name={MonthCalcFieldNames.donatePercent}
+            value={donatePercent}
             type="range"
-            disabled={!isHelpingArmy || !+investmentPercent || !isHelpingArmy}
-            setValue={setInvestmentPartForArmy}
+            setValue={setDonatePercent}
           />
 
           <Input
-            name={MonthCalcFieldNames.investmentMilitaryBonds}
-            value={investmentMilitaryBonds}
+            name={MonthCalcFieldNames.militaryBonds}
+            value={militaryBonds}
             isNumber
-            disabled={
-              !isMonthlyAidToTheArmy ||
-              !+investmentPercent ||
-              !isHelpingArmy ||
-              !+investmentPartForArmy
-            }
-            setValue={setInvestmentMilitaryBonds}
+            setValue={setMilitaryBonds}
           />
 
           <Input
-            name={MonthCalcFieldNames.investmentComBackAlive}
-            value={investmentComBackAlive}
+            name={MonthCalcFieldNames.comeBackAliveDonate}
+            value={comeBackAliveDonate}
             isNumber
-            disabled={
-              !isMonthlyAidToTheArmy ||
-              !+investmentPercent ||
-              !isHelpingArmy ||
-              !+investmentPartForArmy
-            }
-            setValue={setInvestmentComBackAlive}
+            setValue={setComeBackAliveDonate}
           />
         </>
       </Grid>

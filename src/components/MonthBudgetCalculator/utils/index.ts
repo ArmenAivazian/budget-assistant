@@ -1,1 +1,0 @@
-export { getPersonalBudget } from "./getPersonalBudget";

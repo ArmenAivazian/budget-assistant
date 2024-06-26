@@ -19,9 +19,9 @@ export const Label = memo(function Label({
       dangerouslySetInnerHTML={{
         __html: `${text}${
           rangeValue
-            ? `<span class="w-14 inline-block">&nbsp;(${rangeValue}%)</span>`
-            : ""
-        }:`,
+            ? `:<span class="w-14 inline-block">&nbsp;(${rangeValue}%)</span>`
+            : ":"
+        }`,
       }}
     ></label>
   );
