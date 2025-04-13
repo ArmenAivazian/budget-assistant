@@ -39,28 +39,26 @@ export const InvestmentRow = () => {
     <Row>
       <Title text={`🕛 Investment`} />
       <Grid>
-        <>
-          <Input
-            name={MonthCalcFieldNames.investmentPercent}
-            value={investmentPercent}
-            type="range"
-            setValue={setInvestmentPercent}
-          />
+        <Input
+          name={MonthCalcFieldNames.investmentPercent}
+          value={investmentPercent}
+          type="range"
+          setValue={setInvestmentPercent}
+        />
 
-          <Input
-            name={MonthCalcFieldNames.donatePercent}
-            value={donatePercent}
-            type="range"
-            setValue={setDonatePercent}
-          />
+        <Input
+          name={MonthCalcFieldNames.donatePercent}
+          value={donatePercent}
+          type="range"
+          setValue={setDonatePercent}
+        />
 
-          <Input
-            name={MonthCalcFieldNames.comeBackAliveDonate}
-            value={comeBackAliveDonate}
-            isNumber
-            setValue={setComeBackAliveDonate}
-          />
-        </>
+        <Input
+          name={MonthCalcFieldNames.comeBackAliveDonate}
+          value={comeBackAliveDonate}
+          isNumber
+          setValue={setComeBackAliveDonate}
+        />
       </Grid>
     </Row>
   );

@@ -7,6 +7,8 @@ export enum MonthCalcFieldNames {
   investmentPercent = "Percentage of Investment",
   donatePercent = "Percentage of Donation",
   comeBackAliveDonate = "Come Back Alive",
-  futureExpenses = "Future expenses",
+  additionalCosts = "Additional Costs",
   currentBalance = "Current balance",
+  plannedExpenses = "Total",
+  rent = "Rent",
 }

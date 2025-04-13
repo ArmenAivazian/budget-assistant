@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { MonthBudgetCalculator, Navbar } from "@src/components";
 
+import { CalculatorTypes } from "./components/MonthBudgetCalculator/MonthBudgetCalculator.types";
+
 import { HelpfulData } from "./components/HelpfulData";
 
 import { ContextProviders } from "./ContextProviders";
@@ -12,8 +14,10 @@ export function App() {
   const ActiveTab = () => {
     switch (activeMenuItem) {
       case 0:
-        return <MonthBudgetCalculator />;
+        return <MonthBudgetCalculator type={CalculatorTypes.Fixed} />;
       case 1:
+        return <MonthBudgetCalculator type={CalculatorTypes.Statistical} />;
+      case 2:
         return <HelpfulData />;
       default:
         return null;

@@ -45,6 +45,7 @@
 - Print for information how much you plan to spend per month
 - Add the ability to customize for the user (choose names, number of family members, types of investments, etc.)
 - Add ukrainian language
+- AI predict monthly expenses
 
 ### Tech Improvements
 
@@ -56,3 +57,7 @@
 - Improve ContextProviders 
     - make util for creating new context
     - move `convertStrNumToNum` to this level
+
+## ✅ Done
+
+- Add Fixed type for Mounthly Budget

@@ -35,9 +35,29 @@ export function useContextData() {
     ({ currentBalance }) => currentBalance
   );
 
-  const futureExpenses = useContextSelector(
+  const additionalCosts = useContextSelector(
     MonthBudgetCalculatorContext,
-    ({ futureExpenses }) => futureExpenses
+    ({ additionalCosts }) => additionalCosts
+  );
+
+  const plannedExpenses = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ plannedExpenses }) => plannedExpenses
+  );
+
+  const setPlannedExpenses = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ setPlannedExpenses }) => setPlannedExpenses
+  );
+
+  const rent = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ rent }) => rent
+  );
+
+  const setRent = useContextSelector(
+    MonthBudgetCalculatorContext,
+    ({ setRent }) => setRent
   );
 
   const setCurrentBalance = useContextSelector(
@@ -45,9 +65,9 @@ export function useContextData() {
     ({ setCurrentBalance }) => setCurrentBalance
   );
 
-  const setFutureExpenses = useContextSelector(
+  const setAdditionalCosts = useContextSelector(
     MonthBudgetCalculatorContext,
-    ({ setFutureExpenses }) => setFutureExpenses
+    ({ setAdditionalCosts }) => setAdditionalCosts
   );
 
   const statisticPeriod = useContextSelector(
@@ -79,8 +99,12 @@ export function useContextData() {
     setStatisticAmountSpent,
     currentBalance,
     setCurrentBalance,
-    futureExpenses,
-    setFutureExpenses,
+    additionalCosts,
+    setAdditionalCosts,
+    plannedExpenses,
+    setPlannedExpenses,
+    rent,
+    setRent,
     statisticPeriod,
     investmentPercent,
     donatePercent,

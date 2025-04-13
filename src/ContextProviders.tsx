@@ -17,8 +17,8 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   const currentBalanceKey = convertStrToHyphenStr(
     MonthCalcFieldNames.currentBalance
   );
-  const futureExpensesKey = convertStrToHyphenStr(
-    MonthCalcFieldNames.futureExpenses
+  const additionalCostsKey = convertStrToHyphenStr(
+    MonthCalcFieldNames.additionalCosts
   );
   const investmentPercentKey = convertStrToHyphenStr(
     MonthCalcFieldNames.investmentPercent
@@ -32,6 +32,10 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   const investmentComBackAliveKey = convertStrToHyphenStr(
     MonthCalcFieldNames.comeBackAliveDonate
   );
+  const plannedExpensesKey = convertStrToHyphenStr(
+    MonthCalcFieldNames.plannedExpenses
+  );
+  const RentKey = convertStrToHyphenStr(MonthCalcFieldNames.rent);
 
   const [statisticPeriod, setStatisticPeriod] = useState(
     getAmountDays(MONTH_CALC_DATE_DEFAULT_START, MONTH_CALC_DATE_DEFAULT_END)
@@ -45,8 +49,8 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   const [currentBalance, setCurrentBalance] = useState(
     localStorage.getItem(currentBalanceKey) || ""
   );
-  const [futureExpenses, setFutureExpenses] = useState(
-    localStorage.getItem(futureExpensesKey) || ""
+  const [additionalCosts, setAdditionalCosts] = useState(
+    localStorage.getItem(additionalCostsKey) || ""
   );
   const [investmentPercent, setInvestmentPercent] = useState(
     localStorage.getItem(investmentPercentKey) || "0"
@@ -60,26 +64,34 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   const [comeBackAliveDonate, setComeBackAliveDonate] = useState(
     localStorage.getItem(investmentComBackAliveKey) || ""
   );
+  const [plannedExpenses, setPlannedExpenses] = useState(
+    localStorage.getItem(plannedExpensesKey) || ""
+  );
+  const [rent, setRent] = useState(localStorage.getItem(RentKey) || "");
 
   const monthBudgetCalculatorValue = {
     armenSalary,
     nastiaSalary,
     currentBalance,
-    futureExpenses,
+    additionalCosts,
     statisticPeriod,
     investmentPercent,
     statisticAmountSpent,
     donatePercent,
     comeBackAliveDonate,
+    plannedExpenses,
+    rent,
     setArmenSalary,
     setNastiaSalary,
     setCurrentBalance,
-    setFutureExpenses,
+    setAdditionalCosts,
     setStatisticPeriod,
     setInvestmentPercent,
     setStatisticAmountSpent,
     setDonatePercent,
     setComeBackAliveDonate,
+    setPlannedExpenses,
+    setRent,
   };
 
   return (

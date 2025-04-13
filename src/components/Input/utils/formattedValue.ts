@@ -1,3 +1,5 @@
+import { EVERY_THIRD_DIGIT } from "@src/constants";
+
 function replaceAllDashExceptFirst(str: string) {
   return str.replace(/-/g, (match, indx) => (!indx ? match : ""));
 }
@@ -8,7 +10,7 @@ export function formattedValue(value: string, isNumber: boolean) {
 
     const number = replaceAllDashExceptFirst(numberWithDash);
 
-    return number.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    return number.replace(EVERY_THIRD_DIGIT, " ");
   }
 
   return value;

@@ -1,5 +1,13 @@
 import { Input, Title } from "@src/components";
 import { MonthCalcFieldNames } from "@src/constants";
+import { convertStrNumToNum } from "@src/utils";
+
+import {
+  CalculatorTypes,
+  type MonthBudgetCalculatorProps,
+} from "./MonthBudgetCalculator.types";
+
+import { PlannedExpensesRow } from "./components/PlannedExpensesRow";
 
 import {
   Column,
@@ -11,22 +19,24 @@ import {
 } from "./components";
 import { useCalculates, useContextData } from "./hooks";
 
-export const MonthBudgetCalculator = () => {
+export const MonthBudgetCalculator = ({ type }: MonthBudgetCalculatorProps) => {
   const {
     armenSalary,
-    setArmenSalary,
     nastiaSalary,
-    setNastiaSalary,
     statisticAmountSpent,
-    setStatisticAmountSpent,
     currentBalance,
-    setCurrentBalance,
-    futureExpenses,
-    setFutureExpenses,
+    additionalCosts,
     investmentPercent,
     donatePercent,
     statisticPeriod,
     comeBackAliveDonate,
+    plannedExpenses,
+    rent,
+    setArmenSalary,
+    setNastiaSalary,
+    setStatisticAmountSpent,
+    setCurrentBalance,
+    setAdditionalCosts,
   } = useContextData();
 
   const { armenMoney, nastiaMoney, forInvestments, forDonate } = useCalculates(
@@ -34,11 +44,13 @@ export const MonthBudgetCalculator = () => {
     nastiaSalary,
     statisticAmountSpent,
     currentBalance,
-    futureExpenses,
+    additionalCosts,
     statisticPeriod,
     investmentPercent,
     donatePercent,
-    comeBackAliveDonate
+    comeBackAliveDonate,
+    plannedExpenses,
+    type
   );
 
   return (
@@ -62,19 +74,28 @@ export const MonthBudgetCalculator = () => {
               />
             </Grid>
           </Row>
-          <Row>
-            <Title text="📈 Statistic" />
-            <Grid>
-              <RangeDatePicker />
-              <Input
-                name={MonthCalcFieldNames.statisticAmountSpent}
-                value={statisticAmountSpent}
-                isNumber
-                setValue={setStatisticAmountSpent}
-              />
-            </Grid>
-          </Row>
+
+          {type === CalculatorTypes.Statistical && (
+            <Row>
+              <Title text="📈 Statistic" />
+              <Grid>
+                <RangeDatePicker />
+                <Input
+                  name={MonthCalcFieldNames.statisticAmountSpent}
+                  value={statisticAmountSpent}
+                  isNumber
+                  setValue={setStatisticAmountSpent}
+                />
+              </Grid>
+            </Row>
+          )}
+
+          {type === CalculatorTypes.Fixed && (
+            <PlannedExpensesRow plannedExpenses={plannedExpenses} rent={rent} />
+          )}
+
           <InvestmentRow />
+
           <Row>
             <Title text="🕳 Current Balance" />
             <Grid withoutLabel>
@@ -87,13 +108,14 @@ export const MonthBudgetCalculator = () => {
               />
             </Grid>
           </Row>
+
           <Row>
-            <Title text="💸 Future Expenses" />
+            <Title text="💸 Additional Costs" />
             <Grid withoutLabel>
               <Input
-                name={MonthCalcFieldNames.futureExpenses}
-                value={futureExpenses}
-                setValue={setFutureExpenses}
+                name={MonthCalcFieldNames.additionalCosts}
+                value={additionalCosts}
+                setValue={setAdditionalCosts}
                 isNumber
                 withoutLabel
               />
@@ -108,6 +130,14 @@ export const MonthBudgetCalculator = () => {
             <ResultField text="Donate" value={forDonate / 2} />
             <ResultField text="Armen" value={armenMoney} />
             <ResultField text="Nastia" value={nastiaMoney} />
+            {type === CalculatorTypes.Fixed && (
+              <ResultField
+                text="Ideal Expenses"
+                value={
+                  convertStrNumToNum(plannedExpenses) - convertStrNumToNum(rent)
+                }
+              />
+            )}
           </div>
         </div>
       </Column>
