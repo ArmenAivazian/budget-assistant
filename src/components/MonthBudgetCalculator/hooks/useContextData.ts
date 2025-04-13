@@ -70,11 +70,6 @@ export function useContextData() {
     ({ comeBackAliveDonate }) => comeBackAliveDonate
   );
 
-  const militaryBonds = useContextSelector(
-    MonthBudgetCalculatorContext,
-    ({ militaryBonds }) => militaryBonds
-  );
-
   return {
     armenSalary,
     setArmenSalary,
@@ -90,6 +85,5 @@ export function useContextData() {
     investmentPercent,
     donatePercent,
     comeBackAliveDonate,
-    militaryBonds,
   };
 }

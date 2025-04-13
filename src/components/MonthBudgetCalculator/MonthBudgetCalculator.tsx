@@ -27,7 +27,6 @@ export const MonthBudgetCalculator = () => {
     donatePercent,
     statisticPeriod,
     comeBackAliveDonate,
-    militaryBonds,
   } = useContextData();
 
   const { armenMoney, nastiaMoney, forInvestments, forDonate } = useCalculates(
@@ -39,8 +38,7 @@ export const MonthBudgetCalculator = () => {
     statisticPeriod,
     investmentPercent,
     donatePercent,
-    comeBackAliveDonate,
-    militaryBonds
+    comeBackAliveDonate
   );
 
   return (
@@ -106,19 +104,11 @@ export const MonthBudgetCalculator = () => {
       <Column>
         <div className="flex-1 overflow-y-auto ">
           <div className="grid md:grid-cols-[auto_1fr] grid-cols-[auto_1fr_auto_1fr] items-center md:p-6 p-3 gap-2">
-            <ResultField text="For Investments" value={forInvestments} />
-            <ResultField text="For Donate" value={forDonate / 2} />
-            <ResultField text="For Armen" value={armenMoney} />
-            <ResultField text="For Nastia" value={nastiaMoney} />
+            <ResultField text="Investments" value={forInvestments} />
+            <ResultField text="Donate" value={forDonate / 2} />
+            <ResultField text="Armen" value={armenMoney} />
+            <ResultField text="Nastia" value={nastiaMoney} />
           </div>
-        </div>
-        <div className="border-t border-gray-800 px-4 py-3 sm:px-6">
-          <a
-            href="#"
-            className="flex items-center justify-center rounded-md border border-transparent bg-gray-800 px-6 py-3  text-lg font-bold text-white shadow-sm hover:rounded-none"
-          >
-            Save
-          </a>
         </div>
       </Column>
     </div>

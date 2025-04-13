@@ -6,7 +6,6 @@ export enum MonthCalcFieldNames {
   daysOfAnalyticsLast = "The last day of analysis",
   investmentPercent = "Percentage of Investment",
   donatePercent = "Percentage of Donation",
-  militaryBonds = "Military Bonds",
   comeBackAliveDonate = "Come Back Alive",
   futureExpenses = "Future expenses",
   currentBalance = "Current balance",

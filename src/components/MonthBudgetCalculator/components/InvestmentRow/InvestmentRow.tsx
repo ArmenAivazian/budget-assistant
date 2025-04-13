@@ -24,15 +24,7 @@ export const InvestmentRow = () => {
     MonthBudgetCalculatorContext,
     ({ setDonatePercent }) => setDonatePercent
   );
-  const militaryBonds = useContextSelector(
-    MonthBudgetCalculatorContext,
-    ({ militaryBonds }) => militaryBonds
-  );
 
-  const setMilitaryBonds = useContextSelector(
-    MonthBudgetCalculatorContext,
-    ({ setMilitaryBonds }) => setMilitaryBonds
-  );
   const comeBackAliveDonate = useContextSelector(
     MonthBudgetCalculatorContext,
     ({ comeBackAliveDonate }) => comeBackAliveDonate
@@ -60,13 +52,6 @@ export const InvestmentRow = () => {
             value={donatePercent}
             type="range"
             setValue={setDonatePercent}
-          />
-
-          <Input
-            name={MonthCalcFieldNames.militaryBonds}
-            value={militaryBonds}
-            isNumber
-            setValue={setMilitaryBonds}
           />
 
           <Input

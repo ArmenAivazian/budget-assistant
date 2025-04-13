@@ -11,8 +11,7 @@ export function useCalculates(
   statisticPeriod: number,
   investmentPercentStr: string,
   donatePercentStr: string,
-  comeBackAliveDonateStr: string,
-  militaryBondsStr: string
+  comeBackAliveDonateStr: string
 ) {
   const armenSalary = convertStrNumToNum(armenSalaryStr);
   const nastiaSalary = convertStrNumToNum(nastiaSalaryStr);
@@ -22,7 +21,6 @@ export function useCalculates(
   const investmentPercent = convertStrNumToNum(investmentPercentStr);
   const donatePercent = convertStrNumToNum(donatePercentStr);
   const comeBackAliveDonate = convertStrNumToNum(comeBackAliveDonateStr);
-  const militaryBonds = convertStrNumToNum(militaryBondsStr);
 
   const daysInMonth = 31;
   const sumSalaries = armenSalary + nastiaSalary;
@@ -36,7 +34,7 @@ export function useCalculates(
 
   const forInvestments = sumSalaries * (investmentPercent / 100);
   const forArmy = sumSalaries * (donatePercent / 100);
-  const forDonate = forArmy - comeBackAliveDonate - militaryBonds;
+  const forDonate = forArmy - comeBackAliveDonate;
 
   const allExpenses = expensesPerMonth + forInvestments + forArmy;
 

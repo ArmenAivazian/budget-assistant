@@ -32,9 +32,6 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   const investmentComBackAliveKey = convertStrToHyphenStr(
     MonthCalcFieldNames.comeBackAliveDonate
   );
-  const investmentMilitaryBondsKey = convertStrToHyphenStr(
-    MonthCalcFieldNames.militaryBonds
-  );
 
   const [statisticPeriod, setStatisticPeriod] = useState(
     getAmountDays(MONTH_CALC_DATE_DEFAULT_START, MONTH_CALC_DATE_DEFAULT_END)
@@ -63,9 +60,6 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
   const [comeBackAliveDonate, setComeBackAliveDonate] = useState(
     localStorage.getItem(investmentComBackAliveKey) || ""
   );
-  const [militaryBonds, setMilitaryBonds] = useState(
-    localStorage.getItem(investmentMilitaryBondsKey) || ""
-  );
 
   const monthBudgetCalculatorValue = {
     armenSalary,
@@ -77,7 +71,6 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
     statisticAmountSpent,
     donatePercent,
     comeBackAliveDonate,
-    militaryBonds,
     setArmenSalary,
     setNastiaSalary,
     setCurrentBalance,
@@ -87,7 +80,6 @@ export function ContextProviders({ children }: { children: JSX.Element }) {
     setStatisticAmountSpent,
     setDonatePercent,
     setComeBackAliveDonate,
-    setMilitaryBonds,
   };
 
   return (
