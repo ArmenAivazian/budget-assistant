@@ -11,7 +11,7 @@
     "deploy": "pnpm build && npx firebase deploy"
   },
   "dependencies": {
-    "pnpm": "8.3.1",
+    "pnpm": "10.8.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "use-context-selector": "1.4.1"

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       pnpm:
-        specifier: 8.3.1
-        version: 8.3.1
+        specifier: 10.8.0
+        version: 10.8.0
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -2759,9 +2759,9 @@ packages:
     resolution: {integrity: sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==}
     engines: {node: '>= 6'}
 
-  pnpm@8.3.1:
-    resolution: {integrity: sha512-0mT2ZAv08J3nz8xUdWhRW88GE89IWgPo/xZhb6acQXK2+aCikl7kT7Bg31ZcnJqOrwYXSed68xjLd/ZoSnBR8w==}
-    engines: {node: '>=16.14'}
+  pnpm@10.8.0:
+    resolution: {integrity: sha512-DoJxTRtbQ8dGEBk8sgc0iXwdAN6J0OGEIK68WXf6E9eAqcsFc0Yk6B69gcyHbNRkeUhQZBxIuVRDJrViLKKZcQ==}
+    engines: {node: '>=18.12'}
     hasBin: true
 
   portfinder@1.0.32:
@@ -6608,7 +6608,7 @@ snapshots:
 
   pirates@4.0.5: {}
 
-  pnpm@8.3.1: {}
+  pnpm@10.8.0: {}
 
   portfinder@1.0.32:
     dependencies:
