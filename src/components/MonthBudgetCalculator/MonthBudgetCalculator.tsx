@@ -134,7 +134,10 @@ export const MonthBudgetCalculator = ({ type }: MonthBudgetCalculatorProps) => {
               <ResultField
                 text="Ideal Expenses"
                 value={
-                  convertStrNumToNum(plannedExpenses) - convertStrNumToNum(rent)
+                  convertStrNumToNum(plannedExpenses) -
+                  convertStrNumToNum(rent) -
+                  convertStrNumToNum(comeBackAliveDonate) -
+                  forDonate
                 }
               />
             )}
